@@ -1,4 +1,8 @@
 from app import * 
+
+'''
+Classe que representa o cliente
+'''
 class Client(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     nome = db.Column(db.String(50))

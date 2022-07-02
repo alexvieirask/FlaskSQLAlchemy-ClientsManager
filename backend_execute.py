@@ -16,7 +16,8 @@ def route_add():
         db.session.commit()
         return redirect(url_for('route_index'))
     return render_template('add.html')
-    
+
+# Rota para exclusão de clientes
 @app.route('/delete/<int:id>')
 def route_delete(id):
     cliente = Client.query.get(id)
@@ -24,17 +25,16 @@ def route_delete(id):
     db.session.commit()
     return redirect(url_for('route_index'))
 
+'''
+Rota para edição de atributos de um cliente já existente
+Rota Inacabada
+'''
 @app.route('/edit/<int:id>', methods = ['GET','POST'] )
 def route_edit(id):
     cliente = Client.query.filter_by(id=id).first()
     if request.method == 'POST':
         return redirect(url_for('route_index'))
     return render_template('edit.html',cliente = cliente)
-
-    
-
-
-
 
 if __name__== '__main__':
     db.create_all()
